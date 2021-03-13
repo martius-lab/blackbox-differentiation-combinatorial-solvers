@@ -1,6 +1,6 @@
 # Differentiation of Blackbox Combinatorial Solvers
 
-This repository provides code for the paper [Differentiation of Blackbox Combinatorial Solvers](https://openreview.net/pdf?id=BkevoJSYPB).
+This repository provides code for the paper [Differentiation of Blackbox Combinatorial Solvers](http://arxiv.org/abs/1912.02175).
 
 By Marin Vlastelica*, Anselm Paulus*, Vít Musil, [Georg Martius](http://georg.playfulmachines.com/) and [Michal Rolínek](https://scholar.google.de/citations?user=DVdSTFQAAAAJ&hl=en).
 
@@ -19,7 +19,7 @@ For a condensed version containing only the modules (along with additional solve
 ## Introduction
 
 This repository provides a visualization for all the datasets used in
-[Differentiation of Blackbox Combinatorial Solvers](https://openreview.net/pdf?id=BkevoJSYPB).
+[Differentiation of Blackbox Combinatorial Solvers](http://arxiv.org/abs/1912.02175).
 Additionally, the training code for the Warcraft Shortest Path experiment is provided.
 
 *Disclaimer*: This code is a PROTOTYPE. It should work fine but use at your own risk.
