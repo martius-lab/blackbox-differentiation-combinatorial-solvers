@@ -6,6 +6,7 @@ By Marin Vlastelica*, Anselm Paulus*, Vít Musil, [Georg Martius](http://georg.p
 
 [Autonomous Learning Group](https://al.is.tuebingen.mpg.de/), [Max Planck Institute for Intelligent Systems](https://is.tuebingen.mpg.de/).
 
+For a condensed version containing only the modules (along with additional solvers) see [this repository](https://github.com/martius-lab/blackbox-backprop).
 
 ## Table of Contents
 0. [Introduction](#introduction)
