@@ -24,6 +24,7 @@ setproctitle = "*"
 ipympl = "*"
 ipyvolume = "*"
 pillow = "*"
+basemap = {git = "https://github.com/matplotlib/basemap.git"}
 
 [requires]
 python_version = "3.6"
