@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+jupyter = "*"
+
+[packages]
+numpy = "==1.16.1"
+torch = "==1.2.0"
+matplotlib = "==3.0.2"
+pipenv = "*"
+gitpython = "==2.1.11"
+sklearn = "*"
+scipy = "*"
+tensorboardx = "*"
+torchvision = "==0.4.0"
+pathlib2 = "*"
+tqdm = "*"
+ray = "*"
+psutil = "*"
+setproctitle = "*"
+ipympl = "*"
+ipyvolume = "*"
+pillow = "*"
+
+[requires]
+python_version = "3.6"
