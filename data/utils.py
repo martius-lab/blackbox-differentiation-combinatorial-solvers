@@ -109,3 +109,28 @@ def plot_tsp_path(gps, flags, tsp_tour):
 
     plt.title("Country locations with TSP solution")
     plt.show()
+
+
+# helper functions, you need to install tqdm for progress bar feature
+import urllib.request
+import numpy as np
+from matplotlib import pyplot as plt
+
+try:
+
+    from tqdm import tqdm
+    class DownloadProgressBar(tqdm):
+        def update_to(self, b=1, bsize=1, tsize=None):
+            if tsize is not None:
+                self.total = tsize
+            self.update(b * bsize - self.n)
+
+
+    def download_url(url, output_path):
+        with DownloadProgressBar(unit='B', unit_scale=True,
+                                miniters=1, desc=url.split('/')[-1]) as t:
+            urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)
+except ModuleNotFoundError as e:
+    print("Not using progress bar")
+    def download_url(url, output_path):
+        urllib.request.urlretrieve(url, filename=output_path)
