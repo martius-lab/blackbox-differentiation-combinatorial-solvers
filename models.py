@@ -59,8 +59,9 @@ class ConvNet(torch.nn.Module):
         super().__init__()
         self.conv1 = nn.Conv2d(in_channels=in_channels, out_channels=channels_1, kernel_size=kernel_size, stride=stride)
         self.conv2 = nn.Conv2d(in_channels=channels_1, out_channels=channels_2, kernel_size=kernel_size, stride=stride)
+        self.conv3 = nn.Conv2d(in_channels=channels_2, out_channels=channels_2, kernel_size=kernel_size, stride=stride)
 
-        output_shape = (4, 4)
+        output_shape = (5, 5)
         self.pool = nn.AdaptiveAvgPool2d(output_shape)
 
         self.fc1 = nn.Linear(in_features=output_shape[0] * output_shape[1] * channels_2, out_features=linear_layer_size)
@@ -71,6 +72,7 @@ class ConvNet(torch.nn.Module):
         x = F.relu(self.conv1(x))
         x = F.max_pool2d(x, 2, 2)
         x = F.relu(self.conv2(x))
+        x = F.relu(self.conv3(x))
         x = self.pool(x)
         x = x.view(batch_size, -1)
         x = F.relu(self.fc1(x))

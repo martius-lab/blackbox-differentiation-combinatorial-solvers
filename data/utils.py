@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 from mpl_toolkits.basemap import Basemap
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+import pymap3d
 
 
 def neighbours_8(x, y, x_max, y_max):
@@ -109,6 +111,46 @@ def plot_tsp_path(gps, flags, tsp_tour):
 
     plt.title("Country locations with TSP solution")
     plt.show()
+
+
+def get_tsp_path_plot(gps, flags, tsp_tour):
+    fig = plt.figure(figsize=(24, 12))
+    canvas = FigureCanvasAgg(fig)
+    m = Basemap(projection='ortho', lon_0=20.0, lat_0=20.0, resolution=None)
+    m.shadedrelief()
+    for (x, y, z), flag in zip(gps, flags):
+        lat, lon, h = pymap3d.ecef2geodetic(x, y, z, ell=pymap3d.Ellipsoid('wgs84'), deg=True)
+        x, y = m(lon, lat)
+        im = OffsetImage(flag[..., ::-1], zoom=0.8)
+        ab = AnnotationBbox(im, (x, y), xycoords='data', frameon=False)
+        m._check_ax().add_artist(ab)
+
+    num_countries = len(tsp_tour)
+    last_country = 0
+    current_country = 0
+    path_indices = [0]
+    for _ in range(num_countries):
+        for j in range(num_countries):
+            if tsp_tour[current_country][j] and j != last_country:
+                last_country = current_country
+                current_country = j
+                path_indices.append(current_country)
+                break
+
+    xs = [gps[i][0] for i in path_indices]
+    ys = [gps[i][1] for i in path_indices]
+    zs = [gps[i][2] for i in path_indices]
+    lat, lon, h = pymap3d.ecef2geodetic(xs, ys, zs, ell=pymap3d.Ellipsoid('wgs84'), deg=True)
+
+    x, y = m(lon, lat)
+    m.plot(x, y, 'o-', markersize=5, linewidth=3)
+    plt.title("Country locations with TSP solution")
+
+    # Retrieve a view on the renderer buffer
+    canvas.draw()
+    buf = canvas.buffer_rgba()
+    # convert to a NumPy array
+    return np.asarray(buf).transpose(2, 0, 1)
 
 
 # helper functions, you need to install tqdm for progress bar feature
