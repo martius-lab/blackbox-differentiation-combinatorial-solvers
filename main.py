@@ -12,12 +12,17 @@ from utils import set_seed, save_metrics_params, update_params_from_cmdline, sav
 import warcraft_shortest_path.data_utils as warcraft_shortest_path_data
 import warcraft_shortest_path.trainers as warcraft_shortest_path_trainers
 
+import globe_tsp.data_utils as tsp_data
+import globe_tsp.trainers as tsp_trainers
+
 dataset_loaders = {
-    "warcraft_shortest_path": warcraft_shortest_path_data.load_dataset
+    "warcraft_shortest_path": warcraft_shortest_path_data.load_dataset,
+    "globe_tsp": tsp_data.load_dataset
 }
 
 trainer_loaders = {
-    "warcraft_shortest_path": warcraft_shortest_path_trainers.get_trainer
+    "warcraft_shortest_path": warcraft_shortest_path_trainers.get_trainer,
+    "globe_tsp": tsp_trainers.get_trainer
 }
 
 required_top_level_params = [

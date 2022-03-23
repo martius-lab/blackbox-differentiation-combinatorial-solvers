@@ -20,7 +20,7 @@ For a condensed version containing only the modules (along with additional solve
 
 This repository provides a visualization for all the datasets used in
 [Differentiation of Blackbox Combinatorial Solvers](http://arxiv.org/abs/1912.02175).
-Additionally, the training code for the Warcraft Shortest Path experiment is provided.
+Additionally, the training code for the Warcraft Shortest Path and Globe TSP experiments is provided.
 
 *Disclaimer*: This code is a PROTOTYPE. It should work fine but use at your own risk.
 
@@ -65,6 +65,19 @@ Next, download our [datasets](https://edmond.mpdl.mpg.de/imeji/collection/tGU9ok
     
     The results are stored in the results directory in the project root folder.
 
+- Globe TSP experiment:
+
+  Change directory to project root folder.
+
+  In settings/globe_tsp there are configuration files for various TSP sizes and approximation techniques.
+
+  Run Globe TSP without approximation for instance size k=40:
+  
+  ``python main.py settings/globe_tsp/40_no_approx.json``
+
+  Run Globe TSP with time limit approximation for instance size k=40:
+  
+  ``python main.py settings/globe_tsp/40_approx_time.json``
 
 ## Notes
 

@@ -1,0 +1,49 @@
+{
+  "evaluate_every": 5,
+  "loader_params": {
+    "data_dir": "data/globe_tsp/80_countries_from_100/",
+    "evaluate_with_extra": false,
+    "normalize": false,
+    "use_local_path": false,
+    "use_test_set": true
+  },
+  "model_dir": "results/tsp_80_approx_time_1",
+  "num_cpus": 4,
+  "num_epochs": 50,
+  "problem_type": "globe_tsp",
+  "ray_params": {},
+  "save_visualizations": false,
+  "seed": 1,
+  "trainer_name": "TSPApproximate",
+  "trainer_params": {
+    "batch_size": 5,
+    "l1_regconst": 10,
+    "lambda_val": 5.0,
+    "lr_milestones": [10, 20, 30, 40],
+    "model_params": {
+      "arch_params": {
+        "linear_layer_size": 1000,
+        "kernel_size": 3,
+        "stride": 1,
+        "channels_1": 20,
+        "channels_2": 40
+      },
+      "model_name": "ConvNet"
+    },
+    "optimizer_name": "Adam",
+    "optimizer_params": {
+      "lr": 2e-5,
+      "eps": 1e-3
+    },
+    "preload_batch": true,
+    "use_cuda": false,
+    "use_lr_scheduling": true,
+    "approximation_params": {
+      "mip_gap": null,
+      "mip_gap_abs": null,
+      "time_limit": 1
+    }
+  },
+  "use_ray": false,
+  "fast_forward_training": false
+}
